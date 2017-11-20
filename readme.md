@@ -47,19 +47,6 @@ python3 crypto_calculator.py
 ## Sample output
 
 ```python 
-Explanation of the format of the output:
-
-'ETH    [35279]       22     7837.89 EUR    :       25   coins @   313.52 EUR '
-
-  for example, means:
-
-'You have 7837.89 EUR of ETH'
-'ETH has marketCap of 35279 million USD'
-'You have 25 coins, each of which is worth 313.52 EUR'
-'22' is a measure of the % size of your investment relative to the market cap of the coin. It is calculated from (7837.89/35279)x100
-  Higher values mean higher risk, but greater chance of higher profits
-
-
 ###################################################################################### 
 
             Breakdown per Exchange 
@@ -80,7 +67,7 @@ Kraken Total : 12359.53 EUR
 
 #-----------------
 (2)    KuCoin
------------------
+#-----------------
 KCS       [58]       94       54.84 EUR    :      100   coins @     0.55 EUR 
 NEBL      [39]     3454     1347.07 EUR    :      500   coins @     2.69 EUR 
 ETH    [35284]        4      1567.8 EUR    :        5   coins @   313.56 EUR 
@@ -90,7 +77,7 @@ KuCoin Total : 2969.71 EUR
 
 #-----------------
 (3)    Coss
------------------
+#-----------------
 COSS       [5]     2205      110.28 EUR    :     2000   coins @     0.06 EUR 
 CVC      [120]      249      299.54 EUR    :     1000   coins @      0.3 EUR 
 EOS      [993]       87      865.57 EUR    :      500   coins @     1.73 EUR 
@@ -109,7 +96,7 @@ EOS      [993]     1743    17311.48 EUR    :    10000   coins @     1.73 EUR
 OMG      [832]      417     3473.31 EUR    :      500   coins @     6.95 EUR 
 
 Binance Total : 25241.33 EUR
----------------------------------------- 
+#---------------------------------------- 
 
 #-----------------
 (5)    Bittrex
@@ -149,4 +136,17 @@ Bittrex Total : 1481.14 EUR
 
 ###################################################################################### 
 
+```
+
+## Explanation of the format of the output
+``` 
+'ETH    [35279]       22     7837.89 EUR    :       25   coins @   313.52 EUR '
+
+  for example, means:
+
+'You have 7837.89 EUR of ETH'
+'ETH has marketCap of 35279 million USD'
+'You have 25 coins, each of which is worth 313.52 EUR'
+'22' is a measure of the % size of your investment relative to the market cap of the coin. It is calculated from (7837.89/35279)x100
+  Higher values mean higher risk, but greater chance of higher profits
 ```
