@@ -1,7 +1,7 @@
 # Crypto Calculator
 Quickly and easily calculate the current gain/loss of your Cryprocurrency Portfolio using real time data from  [CoinMarketCap](https://coinmarketcap.com/api/)
 
-*If you have bought several cryptocurrencies it can be troublesome keeping track of how much your investment is worth (in fiat) at any given time. This is especially true (and interesting) considering how fast the exchange rates are changing. If your investment is spread out across several exchanges this exacerbates this problem. This script automates the proces, and can present the results in your choice of several fiat currencies EUR, USD, GBP etc.*
+*If you have bought several cryptocurrencies it can be troublesome keeping track of how much your investment is worth (in fiat) at any given time. This is especially true (and interesting) considering how fast the exchange rates are changing. If your investment is spread out across several exchanges this exacerbates this problem. This script automates the process, and can present the results in your choice of several fiat currencies EUR, USD, GBP etc.*
 
 ## Prerequisites
 * Python 3
