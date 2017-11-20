@@ -14,7 +14,7 @@ pip3 install requests
 ```
 
 * Specify what currencies you have bought by editing the file
- **crypto_portfolio.py**  
+ **[crypto_portfolio.py](crypto_portfolio.py)**  
    (*For a complete list of possible currencies see [here](https://api.coinmarketcap.com/v1/ticker/)*)
 
 
