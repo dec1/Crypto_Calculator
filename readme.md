@@ -47,66 +47,79 @@ python3 crypto_calculator.py
 ## Sample output
 
 ```python 
+Explanation of the format of the output:
+
+'ETH    [35279]       22     7837.89 EUR    :       25   coins @   313.52 EUR '
+
+  for example, means:
+
+'You have 7837.89 EUR of ETH'
+'ETH has marketCap of 35279 million USD'
+'You have 25 coins, each of which is worth 313.52 EUR'
+'22' is a measure of the % size of your investment relative to the market cap of the coin. It is calculated from (7837.89/35279)x100
+  Higher values mean higher risk, but greater chance of higher profits
+
+
 ###################################################################################### 
 
             Breakdown per Exchange 
 
 ###################################################################################### 
 
------------------
+#-----------------
 (1)    Kraken
------------------
-XRP         40.32 EUR    :      200   coins @      0.2 EUR 
-XMR       2285.28 EUR    :       20   coins @   114.26 EUR 
-EUR          1200 EUR    :     1200   coins @        1 EUR 
-ETH       7628.19 EUR    :       25   coins @   305.13 EUR 
-REP        865.38 EUR    :     50.5   coins @    17.14 EUR 
+#-----------------
+XRP     [9401]        0       41.47 EUR    :      200   coins @     0.21 EUR 
+XMR     [2148]      110     2380.07 EUR    :       20   coins @    119.0 EUR 
+EUR        [0]        1        1200 EUR    :     1200   coins @        1 EUR 
+ETH    [35284]       22     7839.02 EUR    :       25   coins @   313.56 EUR 
+REP      [229]      392      898.98 EUR    :     50.5   coins @     17.8 EUR 
 
-Kraken Total : 12019.17 EUR
----------------------------------------- 
+Kraken Total : 12359.53 EUR
+#---------------------------------------- 
 
------------------
+#-----------------
 (2)    KuCoin
 -----------------
-KCS         55.48 EUR    :      100   coins @     0.55 EUR 
-NEBL      1321.98 EUR    :      500   coins @     2.64 EUR 
-ETH       1525.64 EUR    :        5   coins @   305.13 EUR 
+KCS       [58]       94       54.84 EUR    :      100   coins @     0.55 EUR 
+NEBL      [39]     3454     1347.07 EUR    :      500   coins @     2.69 EUR 
+ETH    [35284]        4      1567.8 EUR    :        5   coins @   313.56 EUR 
 
-KuCoin Total : 2903.09 EUR
----------------------------------------- 
+KuCoin Total : 2969.71 EUR
+#---------------------------------------- 
 
------------------
+#-----------------
 (3)    Coss
 -----------------
-COSS       116.86 EUR    :     2000   coins @     0.06 EUR 
-CVC        304.04 EUR    :     1000   coins @      0.3 EUR 
-EOS        800.66 EUR    :      500   coins @      1.6 EUR 
-LSK       8507.68 EUR    :     1000   coins @     8.51 EUR 
-ETH       2135.89 EUR    :        7   coins @   305.13 EUR 
+COSS       [5]     2205      110.28 EUR    :     2000   coins @     0.06 EUR 
+CVC      [120]      249      299.54 EUR    :     1000   coins @      0.3 EUR 
+EOS      [993]       87      865.57 EUR    :      500   coins @     1.73 EUR 
+LSK     [1148]      740      8497.6 EUR    :     1000   coins @      8.5 EUR 
+ETH    [35284]        6     2194.93 EUR    :        7   coins @   313.56 EUR 
 
-Coss Total : 11865.13 EUR
----------------------------------------- 
+Coss Total : 11967.91 EUR
+#---------------------------------------- 
 
------------------
+#-----------------
 (4)    Binance
------------------
-BNB        673.91 EUR    :      500   coins @     1.35 EUR 
-ETH       3661.53 EUR    :       12   coins @   305.13 EUR 
-EOS      16013.22 EUR    :    10000   coins @      1.6 EUR 
-OMG       3390.97 EUR    :      500   coins @     6.78 EUR 
+#----------------
+BNB      [161]      430      693.81 EUR    :      500   coins @     1.39 EUR 
+ETH    [35284]       10     3762.73 EUR    :       12   coins @   313.56 EUR 
+EOS      [993]     1743    17311.48 EUR    :    10000   coins @     1.73 EUR 
+OMG      [832]      417     3473.31 EUR    :      500   coins @     6.95 EUR 
 
-Binance Total : 23739.63 EUR
+Binance Total : 25241.33 EUR
 ---------------------------------------- 
 
------------------
+#-----------------
 (5)    Bittrex
------------------
-FCT         162.9 EUR    :       10   coins @    16.29 EUR 
-ETH       1220.51 EUR    :        4   coins @   305.13 EUR 
-CVC         60.81 EUR    :      200   coins @      0.3 EUR 
+#-----------------
+FCT      [171]       97      166.98 EUR    :       10   coins @     16.7 EUR 
+ETH    [35284]        3     1254.24 EUR    :        4   coins @   313.56 EUR 
+CVC      [120]       49       59.91 EUR    :      200   coins @      0.3 EUR 
 
-Bittrex Total : 1444.21 EUR
----------------------------------------- 
+Bittrex Total : 1481.14 EUR
+#---------------------------------------- 
 
 
 ###################################################################################### 
@@ -115,25 +128,25 @@ Bittrex Total : 1444.21 EUR
 
 ###################################################################################### 
 
-(1)      EOS      (eos)             16813.88  EUR   :    10500  coins @      1.6 EUR
-(2)      ETH      (ethereum)        16171.75  EUR   :       53  coins @   305.13 EUR
-(3)      LSK      (lisk)             8507.68  EUR   :     1000  coins @     8.51 EUR
-(4)      OMG      (omisego)          3390.97  EUR   :      500  coins @     6.78 EUR
-(5)      XMR      (monero)           2285.28  EUR   :       20  coins @   114.26 EUR
-(6)      NEBL     (neblio)           1321.98  EUR   :      500  coins @     2.64 EUR
-(7)      EUR      (FIAT)                1200  EUR   :     1200  coins @        1 EUR
-(8)      REP      (augur)             865.38  EUR   :     50.5  coins @    17.14 EUR
-(9)      BNB      (binance-coin)      673.91  EUR   :      500  coins @     1.35 EUR
-(10)     CVC      (civic)             364.85  EUR   :     1200  coins @      0.3 EUR
-(11)     FCT      (factom)             162.9  EUR   :       10  coins @    16.29 EUR
-(12)     COSS     (coss)              116.86  EUR   :     2000  coins @     0.06 EUR
-(13)     KCS      (kucoin-shares)      55.48  EUR   :      100  coins @     0.55 EUR
-(14)     XRP      (ripple)             40.32  EUR   :      200  coins @      0.2 EUR
+(1)      EOS      (eos)             [993]      1830      18177  EUR   :    10500  coins @     1.73 EUR
+(2)      ETH      (ethereum)      [35284]        47      16618  EUR   :       53  coins @   313.56 EUR
+(3)      LSK      (lisk)           [1148]       740       8497  EUR   :     1000  coins @      8.5 EUR
+(4)      OMG      (omisego)         [832]       417       3473  EUR   :      500  coins @     6.95 EUR
+(5)      XMR      (monero)         [2148]       110       2380  EUR   :       20  coins @    119.0 EUR
+(6)      NEBL     (neblio)           [39]      3454       1347  EUR   :      500  coins @     2.69 EUR
+(7)      EUR      (FIAT)              [0]         1       1200  EUR   :     1200  coins @        1 EUR
+(8)      REP      (augur)           [229]       392        898  EUR   :     50.5  coins @     17.8 EUR
+(9)      BNB      (binance-coin)    [161]       430        693  EUR   :      500  coins @     1.39 EUR
+(10)     CVC      (civic)           [120]       299        359  EUR   :     1200  coins @      0.3 EUR
+(11)     FCT      (factom)          [171]        97        166  EUR   :       10  coins @     16.7 EUR
+(12)     COSS     (coss)              [5]      2205        110  EUR   :     2000  coins @     0.06 EUR
+(13)     KCS      (kucoin-shares)    [58]        94         54  EUR   :      100  coins @     0.55 EUR
+(14)     XRP      (ripple)         [9401]         0         41  EUR   :      200  coins @     0.21 EUR
 
 ###################################################################################### 
 
- Total Profit : EUR 11971.23  (51971.23 - 40000) 
+ Total Profit : EUR 14019.62  (54019.62 - 40000) 
 
 ###################################################################################### 
- 
+
 ```

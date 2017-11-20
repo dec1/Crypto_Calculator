@@ -2,14 +2,14 @@
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-#from crypto_portfolio_me import *
+# from crypto_portfolio_me import *
 from crypto_portfolio import *
 
 import json, requests, collections
 
 
 
-Coin_Data_By_Name =  { } # eg ethereum : { "symb" :  "ETH", "val" : 460, "quantity" :2,  "price": 285}}
+Coin_Data_By_Name =  { } # eg ethereum : { "symb" :  "ETH", "val" : 460, "quantity" :2,  "price": 285, "cap_usd": 200}}
 total  = 0;
 #-------------------------------
 def fiat_code():
@@ -43,9 +43,10 @@ def curr_unit_price( curr_name ):
     atts = data[0]
     symb = atts['symbol']
     price = atts[fiat_price_att()]
+    cap_usd = atts['market_cap_usd']
 
 
-    ret =  (symb, float(price))
+    ret =  (symb, float(price), cap_usd)
     return ret
 #---------------------------------------
 def val_exchange(idx_str,  ex_name, ex_info ):
@@ -57,9 +58,9 @@ def val_exchange(idx_str,  ex_name, ex_info ):
 
         # short circuit evaluate fiat since its not in rest api (yet)
         if is_fiat(name) :
-            symb, price = (fiat_code(), 1)
+            symb, price, cap_usd = (fiat_code(), 1, 1)
         else:
-            symb, price = curr_unit_price(name)
+            symb, price, cap_usd = curr_unit_price(name)
 
         # failed to get price .. skip
         if(price < 0):
@@ -71,7 +72,13 @@ def val_exchange(idx_str,  ex_name, ex_info ):
         quantity_str = str(round(quantity,4)).rjust(8)
         price_str = str(round(price, 2)).rjust(8)
 
-        str_out = "{}  {} {}    : ".format(symb_str, val_str, fiat_code()) + "{}   coins @ {} {} ".format(quantity_str, price_str, fiat_code())
+        cap = int(float(cap_usd) / 1000000.0)
+        cap_str = ("[" + str(cap) + "]").rjust(7)
+
+        rel_inv = int(float(val / cap) * 100) if (cap > 0) else 1
+        rel_inv_str = ("" + str(rel_inv) + "").rjust(7)
+
+        str_out = "{}  {}  {}  {} {}    : ".format(symb_str, cap_str, rel_inv_str,  val_str, fiat_code()) + "{}   coins @ {} {} ".format(quantity_str, price_str, fiat_code())
         print( str_out)
         ex_total = ex_total + val
 
@@ -81,6 +88,7 @@ def val_exchange(idx_str,  ex_name, ex_info ):
         Coin_Data["quantity"] = Coin_Data.get("quantity", 0) + quantity
         Coin_Data["price"] = price
         Coin_Data["symb"] = symb
+        Coin_Data["cap_usd"] = cap_usd
 
         Coin_Data_By_Name[name] = Coin_Data
 
@@ -100,14 +108,21 @@ def print_curr_to_val():
     idx =0
     for name, data in Coin_Data_By_Name.items():
         val     = data["val"]
-        val_str = str(round(val,2)).rjust(10)
+        val_str = str(int(val)).rjust(10)
 
         price_str       = str(round(data["price"], 2)).rjust(8)
         symb_str        = data["symb"].ljust(8)
         quantity_str    = str(round(data["quantity"], 3)).rjust(7)
         name_str = ("(" + name + ")") .ljust(15)
 
-        str_out = "{} {} {}  {}   :  {}  coins @ {} {}".format(symb_str, name_str, val_str, fiat_code(), quantity_str, price_str, fiat_code())
+        tst = data["cap_usd"]
+        cap = int(float(data["cap_usd"]) / 1000000.0)
+        cap_str =  ("[" + str(cap) + "]").rjust(7)
+
+        rel_inv = int(float(val/cap) * 100) if(cap > 0) else 1
+        rel_inv_str = ("" + str(rel_inv) + "").rjust(7)
+
+        str_out = "{} {} {}   {} {}  {}   :  {}  coins @ {} {}".format(symb_str, name_str, cap_str, rel_inv_str,  val_str, fiat_code(), quantity_str, price_str, fiat_code())
         Val_By_Str_Out[str_out] = val
 
     OrdDict = collections.OrderedDict(sorted(Val_By_Str_Out.items(), key=lambda t: t[1], reverse=True))
@@ -116,7 +131,19 @@ def print_curr_to_val():
         idx_str =  "({})".format(idx).ljust(8)
         print("{} {}".format(idx_str, str_out))
 # --------------------------------------
-
+print("")
+print("Explanation of the format of the output:")
+print("")
+print("'ETH    [35279]       22     7837.89 EUR    :       25   coins @   313.52 EUR '")
+print("")
+print("  for example, means:")
+print("")
+print("'You have 7837.89 EUR of ETH'")
+print("'ETH has marketCap of 35279 million USD'")
+print("'You have 25 coins, each of which is worth 313.52 EUR'")
+print("'22' is a measure of the % size of your investment relative to the market cap of the coin. It is calculated from (7837.89/35279)x100")
+print("  Higher values mean higher risk, but greater chance of higher profits")
+print("")
 #curr_unit_price("ethereum")
 #curr_unit_price("fct")
 print("\n###################################################################################### \n")
